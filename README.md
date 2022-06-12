@@ -1,4 +1,4 @@
-# The COMET data standard 
+# The COMET data standard 🦟✍️🔢
 
 In this repository, you can find a blank Excel (.xlsx) file that accompanies the below preprint:
 
