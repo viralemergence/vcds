@@ -1,5 +1,7 @@
 # The COMET data standard 🦟✍️🔢
 
+[![DOI](https://zenodo.org/badge/502667317.svg)](https://zenodo.org/badge/latestdoi/502667317)
+
 In this repository, you can find a blank Excel (.xlsx) file that accompanies the below preprint:
 
 > VY Wu, B Chen, R Christofferson, G Ebel, AC Fagre, E Gallichotte, AR Sweeny, CJ Carlson, SJ Ryan. A minimum data standard for vector competence experiments. _ecoEvoRxiv_ DOI: 10.32942/osf.io/ex2s9.
