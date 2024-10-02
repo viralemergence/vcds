@@ -1,5 +1,15 @@
 # The COMET data standard 🦟✍️🔢
 
+## Repository guide
+
+### How to use the data standard:
+
+We suggest attaching a formatted raw dataset to your publications as a supplementary file / table. A blank template is available in this repository in .xlsx format. If you share your data using the COMET template, you can also [send it to us](egallich@colostate.edu) directly for inclusion in the (currently under construction) COMET database.
+
+### How to cite:
+
+Please cite the  manuscript as: VY Wu, B Chen, R Christofferson, G Ebel, AC Fagre, E Gallichotte, AR Sweeny, CJ Carlson, SJ Ryan. (2022) A minimum data standard for vector competence experiments. _Scientific Data_ DOI: 10.1038/s41597-022-01741-4
+
 ## Changelog 
 
 ### v0.2 (October 2, 2024)
@@ -18,13 +28,3 @@
   - updated to 5 sections to provide sample tested, diagnostic, number tested and number positive
   - also added a section to include results of transmission to a naive animal, including animal species, number of vectors fed on the animal and number positive, and number of recipient animals tested and positive
 - for many of the sections, added dropdown lists for users to pick from 
-
-## Repository guide
-
-### How to use the data standard:
-
-We suggest attaching a formatted raw dataset to your publications as a supplementary file / table. A blank template is available in this repository in .xlsx format. If you share your data using the COMET template, you can also [send it to us](egallich@colostate.edu) directly for inclusion in the (currently under construction) COMET database.
-
-### How to cite:
-
-Please cite the  manuscript as: VY Wu, B Chen, R Christofferson, G Ebel, AC Fagre, E Gallichotte, AR Sweeny, CJ Carlson, SJ Ryan. (2022) A minimum data standard for vector competence experiments. _Scientific Data_ DOI: 10.1038/s41597-022-01741-4
