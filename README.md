@@ -1,5 +1,7 @@
 # The COMET data standard 🦟✍️🔢
 
+[![DOI](https://zenodo.org/badge/502667317.svg)](https://zenodo.org/badge/latestdoi/502667317)
+
 ## Repository guide
 
 ### How to use the data standard:
