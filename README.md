@@ -27,10 +27,4 @@ We suggest attaching a formatted raw dataset to your publications as a supplemen
 
 ### How to cite:
 
-Please cite both of the following:
-
-The template: 
-[![DOI](https://zenodo.org/badge/502667317.svg)](https://zenodo.org/badge/latestdoi/502667317)
-
-The manuscript:
-> VY Wu, B Chen, R Christofferson, G Ebel, AC Fagre, E Gallichotte, AR Sweeny, CJ Carlson, SJ Ryan. A minimum data standard for vector competence experiments. _Scientific Data_ DOI: 10.1038/s41597-022-01741-4
+Please cite the  manuscript as: VY Wu, B Chen, R Christofferson, G Ebel, AC Fagre, E Gallichotte, AR Sweeny, CJ Carlson, SJ Ryan. (2022) A minimum data standard for vector competence experiments. _Scientific Data_ DOI: 10.1038/s41597-022-01741-4
