@@ -1,4 +1,4 @@
-# The COMET data standard 🦟✍️🔢
+# The vector competence data standard 🦟✍️🔢
 
 [![DOI](https://zenodo.org/badge/502667317.svg)](https://zenodo.org/badge/latestdoi/502667317)
 
@@ -6,7 +6,7 @@
 
 ### How to use the data standard:
 
-We suggest attaching a formatted raw dataset to your publications as a supplementary file / table. A blank template is available in this repository in .xlsx format. If you share your data using the COMET template, you can also [send it to us](egallich@colostate.edu) directly for inclusion in the (currently under construction) COMET database.
+We suggest attaching a formatted raw dataset to your publications as a supplementary file / table. A blank template is available in this repository in .xlsx format. If you share your data using this template, you can also [send it to us](egallich@colostate.edu) directly for inclusion in the (currently under construction) COMET database.
 
 ### How to cite:
 
