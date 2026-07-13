@@ -6,6 +6,8 @@
 
 ### How to use the data standard:
 
+Follow guidance in the [manuscript](https://doi.org/10.1038/s41597-022-01741-4).
+
 We suggest attaching a formatted raw dataset to your publications as a supplementary file / table. A blank template is available in this repository in .xlsx format. If you share your data using this template, you can also [send it to us](egallich@colostate.edu) directly for inclusion in the (currently under construction) COMET database.
 
 ### How to cite:
