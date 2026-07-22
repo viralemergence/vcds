@@ -1,10 +1,21 @@
 {
   "$schema": "https://json-schema.org/draft/2020-12/schema",
-  "title": "Vector Competence Data Standard v0.2.1",
+  "title": "Vector Competence Data Standard v1.0.0",
   "description":"A minimal flexible data standard viral vector competence studies",
   "type": "object",
   "properties": {
-    "Study":{
+    "experimentID":{
+          "description":"A unique identifier for each combination of virus-host-sample within a study. The identifier is composed of a prefix, pmid, and a seven digit identifier.",
+          "examples":["cmt_12345678_0000001", "aed_87654321_0000001", "tck_1_0000001"],
+          "type":"array",
+            "items":{
+            "type": ["string"],
+            "minItems":1,
+            "uniqueItems": true,
+            "pattern": "^[a-z]{3}_[0-9]{1,9}_[0-9]{7}"
+            }
+        },
+    "study":{
           "description":"An abbreviated citation for the study in the format Last name of first author, et al. Year Journal",
           "examples":["Murrieta et al. 2021 PLoS Pathogens"],
           "type":"array",
@@ -13,7 +24,7 @@
             "minItems":1
             }
         },
-    "PMID":{
+    "pmid":{
         "description":"A unique integer used to identify works within the PubMed system. Not to be confused with a PubMed Central Identifier. See https://pmc.ncbi.nlm.nih.gov/about/public-access-info/ for additional details. See http://purl.obolibrary.org/obo/OBI_0001617 for definition.",
         "examples":["12345678"],
         "type":"array",
@@ -24,7 +35,7 @@
             "maximum": 99999999
         }
     },
-    "DOI":{
+    "doi":{
         "description":"A centrally registered identifier symbol used to uniquely identify objects given by International DOI Foundation. The DOI system is particularly used for electronic documents such as journal articles. See http://purl.obolibrary.org/obo/OBI_0002110.",
         "examples":["10.1603/ME10007"],
         "type":"array",
@@ -34,7 +45,7 @@
             "pattern" : "^10[.][0-9]{4,9}[/][^\\s]+$"
         }
     },
-    "Vector":{
+    "vector":{
         "description":"The Linnaean classification of the vector on which the experiment was performed, reported as a species binomial. See http://rs.tdwg.org/dwc/terms/scientificName",
         "examples": ["Aedes aegypti"],
         "type":"array",
@@ -43,7 +54,7 @@
             "minItems":1
           }
     },
-    "Vector subsp":{
+    "vectorSubspecies":{
         "description":"Vector subspecies.  A taxonomic category below that of species. See http://purl.obolibrary.org/obo/NCIT_C62700. ",
         "examples": ["Wiedemann"],
         "type":"array",
@@ -52,7 +63,7 @@
             "minItems":1
           }
     },
-    "Vector strain":{
+    "vectorStrain":{
         "description":"Vector strain. A genetic variant within a species. See https://w3id.org/evorao/strain. ",
         "examples": ["163/11", "Zafferana"],
         "type":"array",
@@ -61,7 +72,7 @@
             "minItems":1
           }
     },
-    "Vector origin country":{
+    "vectorOriginCountry":{
         "description":"The country that is the wild source for original vector collection. See http://rs.tdwg.org/dwc/terms/country",
         "examples": ["United States","Belgium","Central African Republic"],
         "type":"array",
@@ -70,7 +81,7 @@
             "minItems":1
           }
     },
-    "Vector origin locality":{
+    "vectorOriginLocality":{
         "description":"The location that is the wild source for original vector collection. See http://rs.tdwg.org/dwc/terms/locality",
         "examples": ["Pariquera-Açu Township, S.Paulo State", "Kern County, California"],
         "type":"array",
@@ -79,7 +90,7 @@
             "minItems":1
           }
     },
-    "Vector origin year":{
+    "vectorOriginYear":{
         "description":"The year when the wild source for original vector collection occurred. May also include season or other date information. Must contain a four digit year. See http://rs.tdwg.org/dwc/terms/year",
         "examples": ["1995", "Winter 2026"],
         "type":"array",
@@ -89,7 +100,7 @@
             "pattern": ".*[0-9]{4}"
           }
     },
-    "Vector gen":{
+    "vectorGeneration":{
         "description":"Vector generation in lab colony. See http://purl.obolibrary.org/obo/PCO_0000054",
         "examples": ["F2", "F9-F10","0"],
         "type":"array",
@@ -99,7 +110,7 @@
             "pattern": ".*[0-9]{1,}"
           }
     },
-    "Virus":{
+    "virus":{
         "description":"The Linnaean classification of the virus with which the experiment was performed, reported as a species binomial. See http://rs.tdwg.org/dwc/terms/scientificName",
         "examples": ["Yellow fever virus", "Zika Virus","Orthoflavivirus zikaense"],
         "type":"array",
@@ -108,7 +119,7 @@
             "minItems":1
           }
     },
-    "Viral lineage":{
+    "viralLineage":{
         "description":"Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes. See https://w3id.org/mixs/0000020",
         "examples": ["West African genotype", "2","Lineage 1"],
         "type":"array",
@@ -117,7 +128,7 @@
             "minItems":1
           }
     },
-    "Viral strain":{
+    "viralStrain":{
         "description":"Identifier given to a genetic variant within a single species. See https://w3id.org/evorao/strain",
         "examples": ["HJV 64A-1519", "HJV B230","MMP1047"],
         "type":"array",
@@ -126,7 +137,7 @@
             "minItems":1
           }
     },
-    "Viral GenBank accession":{
+    "viralGenBankAccession":{
         "description":"Accession number of an entry from the GenBank sequence database. See http://edamontology.org/data_2292",
         "examples": ["KJ451624.1", "U91870"],
         "type":"array",
@@ -135,8 +146,8 @@
             "minItems":1
           }
     },
-    "Infectious clone / recombinant":{
-        "description":"Is the virus derived from an infectious clone?",
+    "recombinantVirus":{
+        "description":"Is the virus derived from recombinant nucleic acid?",
         "examples": ["yes", "no"],
         "type":"array",
         "items":{
@@ -145,14 +156,13 @@
             "enum": ["yes","no"]
           }
     },
-    "Wildtype vs mutant":{
-        "description":"Is the virus unmodified or has the genetic sequence of the virus been intentionally altered? http://purl.obolibrary.org/obo/GENO_0000480",
-        "examples": ["mutant", "wildtype"],
+    "wildtype":{
+        "description":"Is the virus unmodified (true) or has the genetic sequence of the virus been intentionally altered (false)? http://purl.obolibrary.org/obo/GENO_0000480",
+        "examples": [true, false],
         "type":"array",
         "items":{
-            "type": ["string","null"],
-            "minItems":1,
-            "enum": ["mutant","wildtype"]
+            "type": ["boolean","null"],
+            "minItems":1
           }
     },
     "Viral origin locality":{
@@ -338,7 +348,7 @@
     },
     "# tested":{
         "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
-        "examples": ["qRT-PCR", "IFA", "plaque assay"],
+        "examples": [1, 1000, 42],
         "type":"array",
         "items":{
             "type": ["number"],
@@ -347,7 +357,7 @@
     },
     "# positive":{
         "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
-        "examples": ["qRT-PCR", "IFA", "plaque assay"],
+        "examples": [1, 1000, 42],
         "type":"array",
         "items":{
             "type": ["number"],

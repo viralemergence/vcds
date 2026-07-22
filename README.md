@@ -14,6 +14,24 @@ We suggest attaching a formatted raw dataset to your publications as a supplemen
 
 Please cite the  manuscript as: VY Wu, B Chen, R Christofferson, G Ebel, AC Fagre, E Gallichotte, AR Sweeny, CJ Carlson, SJ Ryan. (2022) A minimum data standard for vector competence experiments. _Scientific Data_ DOI: 10.1038/s41597-022-01741-4
 
+### Versioning Guidelines
+
+All versions of VCDS will include a version number in their title (e.g. v1.0.0).
+
+- Changes including updating required fields, changing field names, adding or removing value restrictions, or other breaking changes will result in a major release bump (1.0.0 -> 2.0.0)
+- Non-breaking changes that impact validation - refining regex patterns, correcting or refining enum values, modifying the directory structure, etc - will result in a minor release bump (1.0.0 -> 1.1.0)
+- Non-breaking changes that do not impact validation - updating descriptions, adding examples, modifying templates, etc - will result in a patch release bump (1.0.0 -> 1.0.1)
+
+All changes will be reflected in both the excel template and the JSON Schema.
+
+Previous versions of the standard will be stored in the `Version history` folder. 
+```
+Version history
+    |- v0.1 (paper)
+    |- ...
+    |- v9.9.9 (some future release)
+```
+
 ## Changelog 
 
 ### v0.2 (October 2, 2024)
