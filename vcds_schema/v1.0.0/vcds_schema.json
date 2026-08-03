@@ -36,11 +36,11 @@
         }
     },
     "doi":{
-        "description":"A centrally registered identifier symbol used to uniquely identify objects given by International DOI Foundation. The DOI system is particularly used for electronic documents such as journal articles. See http://purl.obolibrary.org/obo/OBI_0002110.",
+        "description":"A centrally registered identifier symbol used to uniquely identify objects given by International DOI Foundation. The DOI system is commonly used for electronic documents such as journal articles. See http://purl.obolibrary.org/obo/OBI_0002110.",
         "examples":["10.1603/ME10007"],
         "type":"array",
         "items":{
-            "type": "string",
+            "type": ["string","null"],
             "minItems":1,
             "pattern" : "^10[.][0-9]{4,9}[/][^\\s]+$"
         }
