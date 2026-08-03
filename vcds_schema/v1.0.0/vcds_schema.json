@@ -4,7 +4,7 @@
   "description":"A minimal flexible data standard viral vector competence studies",
   "type": "object",
   "properties": {
-    "experimentID":{
+    "experiment_id":{
           "description":"A unique identifier for each combination of virus-host-sample within a study. The identifier is composed of a prefix, pmid, and a seven digit identifier.",
           "examples":["cmt_12345678_0000001", "aed_87654321_0000001", "tck_1_0000001"],
           "type":"array",
@@ -54,7 +54,7 @@
             "minItems":1
           }
     },
-    "vectorSubspecies":{
+    "vector_subspecies":{
         "description":"Vector subspecies.  A taxonomic category below that of species. See http://purl.obolibrary.org/obo/NCIT_C62700. ",
         "examples": ["Wiedemann"],
         "type":"array",
@@ -63,7 +63,7 @@
             "minItems":1
           }
     },
-    "vectorStrain":{
+    "vector_strain":{
         "description":"Vector strain. A genetic variant within a species. See https://w3id.org/evorao/strain. ",
         "examples": ["163/11", "Zafferana"],
         "type":"array",
@@ -72,7 +72,7 @@
             "minItems":1
           }
     },
-    "vectorOriginCountry":{
+    "vector_origin_country":{
         "description":"The country that is the wild source for original vector collection. See http://rs.tdwg.org/dwc/terms/country",
         "examples": ["United States","Belgium","Central African Republic"],
         "type":"array",
@@ -81,7 +81,7 @@
             "minItems":1
           }
     },
-    "vectorOriginLocality":{
+    "vector_origin_locality":{
         "description":"The location that is the wild source for original vector collection. See http://rs.tdwg.org/dwc/terms/locality",
         "examples": ["Pariquera-Açu Township, S.Paulo State", "Kern County, California"],
         "type":"array",
@@ -90,7 +90,7 @@
             "minItems":1
           }
     },
-    "vectorOriginYear":{
+    "vector_origin_year":{
         "description":"The year when the wild source for original vector collection occurred. May also include season or other date information. Must contain a four digit year. See http://rs.tdwg.org/dwc/terms/year",
         "examples": ["1995", "Winter 2026"],
         "type":"array",
@@ -100,7 +100,7 @@
             "pattern": ".*[0-9]{4}"
           }
     },
-    "vectorGeneration":{
+    "vector_generation":{
         "description":"Vector generation in lab colony. See http://purl.obolibrary.org/obo/PCO_0000054",
         "examples": ["F2", "F9-F10","0"],
         "type":"array",
@@ -119,7 +119,7 @@
             "minItems":1
           }
     },
-    "viralLineage":{
+    "viral_lineage":{
         "description":"Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes. See https://w3id.org/mixs/0000020",
         "examples": ["West African genotype", "2","Lineage 1"],
         "type":"array",
@@ -128,7 +128,7 @@
             "minItems":1
           }
     },
-    "viralStrain":{
+    "viral_strain":{
         "description":"Identifier given to a genetic variant within a single species. See https://w3id.org/evorao/strain",
         "examples": ["HJV 64A-1519", "HJV B230","MMP1047"],
         "type":"array",
@@ -137,7 +137,7 @@
             "minItems":1
           }
     },
-    "viralGenBankAccession":{
+    "viral_genbank_accession":{
         "description":"Accession number of an entry from the GenBank sequence database. See http://edamontology.org/data_2292",
         "examples": ["KJ451624.1", "U91870"],
         "type":"array",
@@ -146,7 +146,7 @@
             "minItems":1
           }
     },
-    "recombinantVirus":{
+    "recombinant_virus":{
         "description":"Is the virus derived from recombinant nucleic acid?",
         "examples": ["yes", "no"],
         "type":"array",
@@ -165,7 +165,7 @@
             "minItems":1
           }
     },
-    "viralOriginLocality":{
+    "viral_origin_locality":{
         "description":"The location that is the wild source for original virus collection. See http://rs.tdwg.org/dwc/terms/locality",
         "examples": ["Zulia state, Venezuela", "Zika Forest, Uganda"],
         "type":"array",
@@ -174,7 +174,7 @@
             "minItems":1
           }
     },
-    "viralOriginYear":{
+    "viral_origin_year":{
         "description":"The year when the wild source for original virus collection occurred. May also include season or other date information. Must contain a four digit year. See http://rs.tdwg.org/dwc/terms/year",
         "examples": ["1995", "Winter 2026"],
         "type":"array",
@@ -184,7 +184,7 @@
             "pattern": ".*[0-9]{4}"
           }
     },
-    "viralHistoryPassage":{
+    "viral_history_passage":{
         "description":"Cell type and passage number. See https://w3id.org/evorao/passage",
         "examples": ["Vero, 2 passages", "C6/36 3", "Ae. triseriatus and Vero 12 alternate passages"],
         "type":"array",
@@ -193,7 +193,7 @@
             "minItems":1
           }
     },
-    "viralHistoryFreshness":{
+    "viral_history_freshness":{
         "description":"Specifies the conditions under which the product was stored to maintain stability and integrity, such as temperature, buffer, and other environmental factors. See https://w3id.org/evorao/storageConditions",
         "examples": ["fresh", "frozen, -80ºC"],
         "type":"array",
@@ -202,7 +202,7 @@
             "minItems":1
           }
     },
-    "exposureRoute":{
+    "exposure_route":{
         "description":"How were vectors exposed. See http://purl.obolibrary.org/obo/ExO_0000055",
         "examples": ["bloodmeal", "intrathoracic injection", "live animal"],
         "type":"array",
@@ -211,7 +211,7 @@
             "minItems":1
           }
     },
-    "hostExposure":{
+    "host_exposure":{
         "description":"Host species used for live animal exposure. See https://w3id.org/mixs/0001298",
         "examples": ["Syrian hamster", "chicken", "American alligator"],
         "type":"array",
@@ -220,7 +220,7 @@
             "minItems":1
           }
     },
-    "hostLineageOrigin":{
+    "host_lineage_origin":{
         "description":"Host intraspecific lineage name, or origin. See https://w3id.org/mixs/0000020",
         "examples": ["Mesocricetus auratus", "C57BL/6"],
         "type":"array",
@@ -247,7 +247,7 @@
             "minItems":1
           }
     },
-    "titerUnits":{
+    "titer_units":{
         "description":"Unit of measure for titer concentration. See http://purl.obolibrary.org/obo/NCIT_C67375",
         "examples": ["log10 FFU/ml", "viral RNA/ml", "MID50/ml"],
         "type":"array",
@@ -265,7 +265,7 @@
             "minItems":1
           }
     },
-    "doseUnits":{
+    "dose_units":{
         "description":"Unit of measure for the dose. See http://purl.obolibrary.org/obo/NCIT_C48463",
         "examples": ["TCID50", "PFU", "log10 TCID50", "log10 PFU"],
         "type":"array",
@@ -274,7 +274,7 @@
             "minItems":1
           }
     },
-    "meanTempReared":{
+    "mean_temp_reared":{
         "description":"Average temperature recorded during rearing in celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
         "examples": ["25.2", "30", "18", "27.6"],
         "type":"array",
@@ -283,7 +283,7 @@
             "minItems":1
           }
     },
-    "amplitureTempReared":{
+    "ampliture_temp_reared":{
         "description":"Ampliture of temperature at which vectors are reared in Celsius. See http://biomodels.net/SBO/SBO_0000492",
         "examples": ["5", "3", "2"],
         "type":"array",
@@ -292,7 +292,7 @@
             "minItems":1
           }
     },
-    "meanTempEIT":{
+    "mean_temp_eit":{
         "description":"Average temperature at which extrinsic incubation happens in Celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
         "examples": ["25.2", "30", "18", "27.6"],
         "type":"array",
@@ -301,7 +301,7 @@
             "minItems":1
           }
     },
-    "amplitureTempEIT":{
+    "ampliture_temp_eit":{
         "description":"Ampliture of temperature at which extrinsic incubation happens in Celsius. See http://biomodels.net/SBO/SBO_0000492",
         "examples": ["5", "3", "2"],
         "type":"array",
@@ -346,7 +346,7 @@
             "minItems":1
           }
     },
-    "numTested":{
+    "num_tested":{
         "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
         "examples": [1, 1000, 42],
         "type":"array",
@@ -355,7 +355,7 @@
             "minItems":1
           }
     },
-    "numPositive":{
+    "num_positive":{
         "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
         "examples": [1, 1000, 42],
         "type":"array",
