@@ -165,7 +165,7 @@
             "minItems":1
           }
     },
-    "Viral origin locality":{
+    "viralOriginLocality":{
         "description":"The location that is the wild source for original virus collection. See http://rs.tdwg.org/dwc/terms/locality",
         "examples": ["Zulia state, Venezuela", "Zika Forest, Uganda"],
         "type":"array",
@@ -174,7 +174,7 @@
             "minItems":1
           }
     },
-    "Viral origin year":{
+    "viralOriginYear":{
         "description":"The year when the wild source for original virus collection occurred. May also include season or other date information. Must contain a four digit year. See http://rs.tdwg.org/dwc/terms/year",
         "examples": ["1995", "Winter 2026"],
         "type":"array",
@@ -184,7 +184,7 @@
             "pattern": ".*[0-9]{4}"
           }
     },
-    "Viral history passage":{
+    "viralHistoryPassage":{
         "description":"Cell type and passage number. See https://w3id.org/evorao/passage",
         "examples": ["Vero, 2 passages", "C6/36 3", "Ae. triseriatus and Vero 12 alternate passages"],
         "type":"array",
@@ -193,7 +193,7 @@
             "minItems":1
           }
     },
-    "Viral history freshness":{
+    "viralHistoryFreshness":{
         "description":"Specifies the conditions under which the product was stored to maintain stability and integrity, such as temperature, buffer, and other environmental factors. See https://w3id.org/evorao/storageConditions",
         "examples": ["fresh", "frozen, -80ºC"],
         "type":"array",
@@ -202,7 +202,7 @@
             "minItems":1
           }
     },
-    "Exposure route":{
+    "exposureRoute":{
         "description":"How were vectors exposed. See http://purl.obolibrary.org/obo/ExO_0000055",
         "examples": ["bloodmeal", "intrathoracic injection", "live animal"],
         "type":"array",
@@ -211,7 +211,7 @@
             "minItems":1
           }
     },
-    "Host exposure":{
+    "hostExposure":{
         "description":"Host species used for live animal exposure. See https://w3id.org/mixs/0001298",
         "examples": ["Syrian hamster", "chicken", "American alligator"],
         "type":"array",
@@ -220,7 +220,7 @@
             "minItems":1
           }
     },
-    "Host lineage / origin":{
+    "hostLineageOrigin":{
         "description":"Host intraspecific lineage name, or origin. See https://w3id.org/mixs/0000020",
         "examples": ["Mesocricetus auratus", "C57BL/6"],
         "type":"array",
@@ -229,7 +229,7 @@
             "minItems":1
           }
     },
-    "Diagnostic (virem.)":{
+    "diagnosticVirem":{
         "description":"Diagnostic method used, if any, for measuring host viremia. See http://id.nlm.nih.gov/mesh/D019411",
         "examples": ["plaque assay", "qRT-PCR"],
         "type":"array",
@@ -238,7 +238,7 @@
             "minItems":1
           }
     },
-    "Titer":{
+    "titer":{
         "description":"Concentration of virus in bloodmeal, intrathoracic inoculation or host viremia if live animal. See http://purl.obolibrary.org/obo/VO_0000555",
         "examples": [">8.8", "44000000", "1E7.1"],
         "type":"array",
@@ -247,7 +247,7 @@
             "minItems":1
           }
     },
-    "Titer units":{
+    "titerUnits":{
         "description":"Unit of measure for titer concentration. See http://purl.obolibrary.org/obo/NCIT_C67375",
         "examples": ["log10 FFU/ml", "viral RNA/ml", "MID50/ml"],
         "type":"array",
@@ -256,7 +256,7 @@
             "minItems":1
           }
     },
-    "Dose":{
+    "dose":{
         "description":"Dose of live virus injected via intrathoracic inoculation, if applicable. See http://purl.obolibrary.org/obo/NCIT_C25488",
         "examples": ["<0.5", "3.2"],
         "type":"array",
@@ -265,7 +265,7 @@
             "minItems":1
           }
     },
-    "Dose Units":{
+    "doseUnits":{
         "description":"Unit of measure for the dose. See http://purl.obolibrary.org/obo/NCIT_C48463",
         "examples": ["TCID50", "PFU", "log10 TCID50", "log10 PFU"],
         "type":"array",
@@ -274,7 +274,7 @@
             "minItems":1
           }
     },
-    "Mean temp. ºC (reared)":{
+    "meanTempReared":{
         "description":"Average temperature recorded during rearing in celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
         "examples": ["25.2", "30", "18", "27.6"],
         "type":"array",
@@ -283,7 +283,7 @@
             "minItems":1
           }
     },
-    "Ampliture temp. ºC (reared)":{
+    "amplitureTempReared":{
         "description":"Ampliture of temperature at which vectors are reared in Celsius. See http://biomodels.net/SBO/SBO_0000492",
         "examples": ["5", "3", "2"],
         "type":"array",
@@ -292,7 +292,7 @@
             "minItems":1
           }
     },
-    "Mean temp. ºC (eit)":{
+    "meanTempEIT":{
         "description":"Average temperature at which extrinsic incubation happens in Celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
         "examples": ["25.2", "30", "18", "27.6"],
         "type":"array",
@@ -301,7 +301,7 @@
             "minItems":1
           }
     },
-    "Ampliture temp. ºC (eit)":{
+    "amplitureTempEIT":{
         "description":"Ampliture of temperature at which extrinsic incubation happens in Celsius. See http://biomodels.net/SBO/SBO_0000492",
         "examples": ["5", "3", "2"],
         "type":"array",
@@ -310,7 +310,7 @@
             "minItems":1
           }
     },
-    "DPI":{
+    "dpi":{
         "description":"Days post-infection. See http://purl.obolibrary.org/obo/UO_0000003",
         "examples": ["5", "3-10", ">2"],
         "type":"array",
@@ -319,7 +319,7 @@
             "minItems":1
           }
     },
-    "Coinfected?":{
+    "coinfected":{
         "description":"Is your mosquito knowingly infected with another organism. See http://www.ebi.ac.uk/efo/EFO_0010716",
         "examples": ["yes", "no"],
         "type":"array",
@@ -328,7 +328,7 @@
             "minItems":1
           }
     },
-    "Sample":{
+    "sample":{
         "description":"Vector sample part used to establish infection. See http://purl.obolibrary.org/obo/OBI_0100051",
         "examples": ["body", "head", "salivary glands"],
         "type":"array",
@@ -337,7 +337,7 @@
             "minItems":1
           }
     },
-    "Diagnostic":{
+    "diagnostic":{
         "description":"How vector infection was established. See http://id.nlm.nih.gov/mesh/D019411",
         "examples": ["qRT-PCR", "IFA", "plaque assay"],
         "type":"array",
@@ -346,7 +346,7 @@
             "minItems":1
           }
     },
-    "# tested":{
+    "numTested":{
         "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
         "examples": [1, 1000, 42],
         "type":"array",
@@ -355,7 +355,7 @@
             "minItems":1
           }
     },
-    "# positive":{
+    "numPositive":{
         "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
         "examples": [1, 1000, 42],
         "type":"array",
@@ -365,7 +365,7 @@
           }
     }
 },
-    "required":["disease_data","project_metadata"]
+    "required":["experimentID","study","pmid","doi","vector","virus","sample","numTested","numPositive"]
 }
 
 
