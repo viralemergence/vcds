@@ -156,12 +156,13 @@
             "enum": ["yes","no"]
           }
     },
-    "wildtype":{
-        "description":"Is the virus unmodified (true) or has the genetic sequence of the virus been intentionally altered (false)? http://purl.obolibrary.org/obo/GENO_0000480",
-        "examples": [true, false],
+    "wildtype_mutant":{
+        "description":"Is the virus unmodified (wildtype) or has the genetic sequence of the virus been intentionally altered (mutant)? http://purl.obolibrary.org/obo/GENO_0000480",
+        "examples": ["wildtype", "mutant"],
         "type":"array",
         "items":{
-            "type": ["boolean","null"],
+            "type": ["string","null"],
+            "enum": ["wildtype","mutant"],
             "minItems":1
           }
     },
@@ -229,7 +230,7 @@
             "minItems":1
           }
     },
-    "diagnosticVirem":{
+    "diagnostic_viremia":{
         "description":"Diagnostic method used, if any, for measuring host viremia. See http://id.nlm.nih.gov/mesh/D019411",
         "examples": ["plaque assay", "qRT-PCR"],
         "type":"array",
@@ -276,7 +277,7 @@
     },
     "mean_temp_reared":{
         "description":"Average temperature recorded during rearing in celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
-        "examples": ["25.2", "30", "18", "27.6"],
+        "examples": [25.2, 30, 18, 27.6],
         "type":"array",
         "items":{
             "type": ["number","null"],
@@ -285,10 +286,19 @@
     },
     "ampliture_temp_reared":{
         "description":"Ampliture of temperature at which vectors are reared in Celsius. See http://biomodels.net/SBO/SBO_0000492",
-        "examples": ["5", "3", "2"],
+        "examples": [5, 3, 2],
         "type":"array",
         "items":{
             "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "relative_humidity_reared":{
+        "description":"Percent relative humidity at which vectors are reared in Celsius. See http://purl.allotrope.org/ontologies/result#AFR_0002614",
+        "examples": ["99", "50-60", "2"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
             "minItems":1
           }
     },
@@ -307,6 +317,15 @@
         "type":"array",
         "items":{
             "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "relative_humidity_eit":{
+        "description":"Percent relative humidity at which vectors are reared in Celsius. See http://purl.allotrope.org/ontologies/result#AFR_0002614",
+        "examples": ["99", "50-60", "2"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
             "minItems":1
           }
     },
@@ -346,7 +365,7 @@
             "minItems":1
           }
     },
-    "num_tested":{
+    "tested":{
         "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
         "examples": [1, 1000, 42],
         "type":"array",
@@ -355,7 +374,7 @@
             "minItems":1
           }
     },
-    "num_positive":{
+    "positive":{
         "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
         "examples": [1, 1000, 42],
         "type":"array",
@@ -363,9 +382,63 @@
             "type": ["number"],
             "minItems":1
           }
+    },
+    "transmission_recipient":{
+        "description":"Host species used for live animal exposure.",
+        "examples": ["suckling mouse", "chicken"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "transmission_diagnostic":{
+        "description":"Diagnostic method used to detect infection in animal. See http://id.nlm.nih.gov/mesh/D019411",
+        "examples": ["seroconversion", "death","plaque assay"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "num_vector_fed":{
+        "description":"Number of vectors fed on the live animal. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [1, 1000, 42],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "num_vector_positive":{
+        "description":"Number of infected vectors that fed on the live animal. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [1, 500, 21],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "num_recipients_tested":{
+        "description":"Number of recipient animals tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [10, 501, 121],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "num_recipients_positive":{
+        "description":"Number of recipient animals that tested positive. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [5, 52, 12],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
     }
 },
-    "required":["experiment_id","study","pmid","doi","vector","virus","sample","num_tested","num_positive"]
+    "required":["experiment_id","study","pmid","doi","vector","virus","sample","tested","positive"]
 }
 
 
