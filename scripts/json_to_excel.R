@@ -46,20 +46,13 @@ for(schema_path in schema_paths){
   
 
   wb <- openxlsx2::wb_workbook(creator = "VCDS team",title = vcds$title)
-  wb$add_worksheet("definitions")
+  wb$add_worksheet("definitions",)
   wb$add_worksheet("template")
 
   wb$add_data(sheet = "definitions",x = definitions_table)
   wb$add_data(sheet = "template", x = template_table_final)
 
   wb$save(file = template_path,overwrite = TRUE)
-
-
-
-
-
-
-
 
 }
 
