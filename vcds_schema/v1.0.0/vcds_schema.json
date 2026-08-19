@@ -5,7 +5,7 @@
   "type": "object",
   "properties": {
     "experiment_id":{
-          "description":"A unique identifier for each combination of virus-host-sample within a study. The identifier is composed of a prefix, pmid, and a seven digit identifier.",
+          "description":"A unique identifier for each combination of virus-host-sample within a study. The identifier is composed of a prefix, pmid, and a seven digit identifier. See http://purl.org/dc/elements/1.1/identifier",
           "examples":["cmt_12345678_0000001", "aed_87654321_0000001", "tck_1_0000001"],
           "type":"array",
             "items":{
@@ -15,8 +15,18 @@
             "pattern": "^[a-z]{3}_[0-9]{1,9}_[0-9]{7}"
             }
         },
+    "group_id":{
+        "description": "An identifier for linking different sample types that originate from the same experimental conditions. The identifier is composed of letters and underscores (snakecase). Each identifier must be unique within the study. See http://purl.obolibrary.org/obo/NCIT_C82529",
+        "examples": ["a","group_A","aedes_Aegypti_Zika_virus"],
+        "type":"array",
+            "items":{
+            "type": ["string"],
+            "minItems":1,
+            "pattern": "^[a-zA-Z]+(?:_[a-zA-Z]+)*$"
+            }
+    },
     "study":{
-          "description":"An abbreviated citation for the study in the format Last name of first author, et al. Year Journal",
+          "description":"An abbreviated citation for the study in the format Last name of first author, et al. Year Journal. See http://schema.org/citation",
           "examples":["Murrieta et al. 2021 PLoS Pathogens"],
           "type":"array",
             "items":{
@@ -25,7 +35,7 @@
             }
         },
     "pmid":{
-        "description":"A unique integer used to identify works within the PubMed system. Not to be confused with a PubMed Central Identifier. See https://pmc.ncbi.nlm.nih.gov/about/public-access-info/ for additional details. See http://purl.obolibrary.org/obo/OBI_0001617 for definition.",
+        "description":"A unique integer used to identify works within the PubMed system. Not to be confused with a PubMed Central Identifier. Review https://pmc.ncbi.nlm.nih.gov/about/public-access-info/ for additional details. See http://purl.obolibrary.org/obo/OBI_0001617",
         "examples":["12345678"],
         "type":"array",
         "items":{
@@ -55,7 +65,7 @@
           }
     },
     "vector_subspecies":{
-        "description":"Vector subspecies.  A taxonomic category below that of species. See http://purl.obolibrary.org/obo/NCIT_C62700. ",
+        "description":"Vector subspecies. A taxonomic category below that of species. See http://purl.obolibrary.org/obo/NCIT_C62700",
         "examples": ["Wiedemann"],
         "type":"array",
         "items":{
@@ -64,7 +74,7 @@
           }
     },
     "vector_strain":{
-        "description":"Vector strain. A genetic variant within a species. See https://w3id.org/evorao/strain. ",
+        "description":"Vector strain. A genetic variant within a species. See https://w3id.org/evorao/strain",
         "examples": ["163/11", "Zafferana"],
         "type":"array",
         "items":{
@@ -147,7 +157,7 @@
           }
     },
     "recombinant_virus":{
-        "description":"Is the virus derived from recombinant nucleic acid?",
+        "description":"Is the virus derived from recombinant nucleic acid? See http://purl.bioontology.org/ontology/CSP/4005-0050",
         "examples": ["yes", "no"],
         "type":"array",
         "items":{
@@ -204,7 +214,7 @@
           }
     },
     "exposure_route":{
-        "description":"How were vectors exposed. See http://purl.obolibrary.org/obo/ExO_0000055",
+        "description":" The way a vector was exposed to a virus. See http://purl.obolibrary.org/obo/ExO_0000055",
         "examples": ["bloodmeal", "intrathoracic injection", "live animal"],
         "type":"array",
         "items":{
@@ -276,7 +286,7 @@
           }
     },
     "mean_temp_reared":{
-        "description":"Average temperature recorded during rearing in celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
+        "description":"Average temperature during rearing in Celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
         "examples": [25.2, 30, 18, 27.6],
         "type":"array",
         "items":{
@@ -284,8 +294,8 @@
             "minItems":1
           }
     },
-    "ampliture_temp_reared":{
-        "description":"Ampliture of temperature at which vectors are reared in Celsius. See http://biomodels.net/SBO/SBO_0000492",
+    "amplitude_temp_reared":{
+        "description":"Amplitude of temperature at which vectors are reared in Celsius. See http://purl.obolibrary.org/obo/NCIT_C70831",
         "examples": [5, 3, 2],
         "type":"array",
         "items":{
@@ -294,7 +304,7 @@
           }
     },
     "relative_humidity_reared":{
-        "description":"Percent relative humidity at which vectors are reared in Celsius. See http://purl.allotrope.org/ontologies/result#AFR_0002614",
+        "description":"Percent relative humidity at which vectors are reared. See http://purl.allotrope.org/ontologies/result#AFR_0002614",
         "examples": ["99", "50-60", "2"],
         "type":"array",
         "items":{
@@ -311,8 +321,8 @@
             "minItems":1
           }
     },
-    "ampliture_temp_eit":{
-        "description":"Ampliture of temperature at which extrinsic incubation happens in Celsius. See http://biomodels.net/SBO/SBO_0000492",
+    "amplitude_temp_eit":{
+        "description":"Amplitude of temperature at which extrinsic incubation happens in Celsius. See http://purl.obolibrary.org/obo/NCIT_C70831",
         "examples": ["5", "3", "2"],
         "type":"array",
         "items":{
@@ -321,7 +331,7 @@
           }
     },
     "relative_humidity_eit":{
-        "description":"Percent relative humidity at which vectors are reared in Celsius. See http://purl.allotrope.org/ontologies/result#AFR_0002614",
+        "description":"Percent relative humidity at which vectors are reared. See http://purl.allotrope.org/ontologies/result#AFR_0002614",
         "examples": ["99", "50-60", "2"],
         "type":"array",
         "items":{
@@ -339,7 +349,7 @@
           }
     },
     "coinfected":{
-        "description":"Is your mosquito knowingly infected with another organism. See http://www.ebi.ac.uk/efo/EFO_0010716",
+        "description":"Is your mosquito knowingly infected with another organism? See http://www.ebi.ac.uk/efo/EFO_0010716",
         "examples": ["yes", "no"],
         "type":"array",
         "items":{
