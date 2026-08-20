@@ -11,12 +11,12 @@ schema_paths <- fs::dir_ls("vcds_schema/",recurse = TRUE, regexp = "vcds_schema\
 
 # for all schema paths, write a template
 for(schema_path in schema_paths){
-  print(schema_path)
+  rlang::inform(schema_path)
   schema_dir <- fs::path_dir(schema_path)
   template_dir <- stringr::str_replace(string = schema_dir,pattern = "vcds_schema",replacement = "template")
-  if(!fs::dir_exists(template_dir)){
-    fs::dir_create(template_dir)
-  }
+  
+  # fs will not overwrite a directory or its contents if it already exists
+  fs::dir_create(template_dir)
   # parse schema
   vcds <- jsonlite::read_json(path = schema_path)
 
