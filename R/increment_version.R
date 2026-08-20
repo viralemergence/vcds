@@ -27,10 +27,12 @@ increment_schema_version <- function(path, increment = c("major","minor","patch"
 
   if(increment == "major"){
     version_numeric[1] <- version_numeric[1]+1
+    version_numeric[2:3] <- 0
   }
   
   if(increment == "minor"){
     version_numeric[2] <- version_numeric[2]+1
+    version_numeric[3] <- 0
   }
 
   if(increment == "patch"){

@@ -32,6 +32,29 @@ Version history
     |- v9.9.9 (some future release)
 ```
 
+### Versioning workflow
+
+[!IMPORTANT]
+
+:eyes: All changes should flow from the JSON schema. 
+
+Review the versioning guidelines above to determine what type of version increment you will be making. 
+All changes to the schema should be made on branches and merged into main via a pull request.  
+
+Before you make changes to the JSON schema, create a new version of the schema using `scripts/increment_version.R`. 
+The script will create a new folder in `vcds_schema` with a copy of the json schema for the new version of the schema you're creating. 
+So if I want to create version 1.2.0, I would run the follwing code in `scripts/increment_version.R`
+
+```
+path <- "vcds_schema/v1.1.95/vcds_schema.json"
+increment_version(path,increment = "minor")
+```
+
+Once changes are pushed to main,  `scripts/json_to_excel.R` will run via github actions and create any excel templates that need to be added following the structure of the template directory. 
+You can also run `scripts/json_to_excel.R` manually if you like.
+
+
+
 ## Changelog 
 
 ### v0.2 (October 2, 2024)
