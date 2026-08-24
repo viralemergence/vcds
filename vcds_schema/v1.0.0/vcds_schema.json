@@ -448,7 +448,7 @@
           }
     }
 },
-    "required":["experiment_id","study","pmid","doi","vector","virus","sample","tested","positive"]
+    "required":["experiment_id","group_id","study","pmid","doi","vector","virus","sample","tested","positive"]
 }
 
 
