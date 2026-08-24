@@ -5,26 +5,15 @@
   "type": "object",
   "properties": {
     "experiment_id":{
-          "description":"A unique identifier for each combination of virus-host-sample within a study. The identifier is composed of a prefix, pmid, and a seven digit identifier. See http://purl.org/dc/elements/1.1/identifier",
-          "examples":["cmt_12345678_0000001", "aed_87654321_0000001", "tck_1_0000001"],
+          "description":"This grouping identifier connects different sample types that originate from the same experimental conditions and virus-vector combination within a study. The identifier is composed of a prefix, pmid, and a seven digit identifier. See http://purl.org/dc/elements/1.1/identifier",
+          "examples":["cmt_12345678_0000001", "aed_87654321_0000001", "tck_1_0001111"],
           "type":"array",
             "items":{
             "type": ["string"],
             "minItems":1,
-            "uniqueItems": true,
             "pattern": "^[a-z]{3}_[0-9]{1,9}_[0-9]{7}"
             }
         },
-    "group_id":{
-        "description": "An identifier for linking different sample types that originate from the same experimental conditions. The identifier is composed of letters and underscores (snakecase). Each identifier must be unique within the study. See http://purl.obolibrary.org/obo/NCIT_C82529",
-        "examples": ["a","group_A","aedes_Aegypti_Zika_virus"],
-        "type":"array",
-            "items":{
-            "type": ["string"],
-            "minItems":1,
-            "pattern": "^[a-zA-Z]+(?:_[a-zA-Z]+)*$"
-            }
-    },
     "study":{
           "description":"An abbreviated citation for the study in the format Last name of first author, et al. Year Journal. See http://schema.org/citation",
           "examples":["Murrieta et al. 2021 PLoS Pathogens"],
@@ -448,7 +437,7 @@
           }
     }
 },
-    "required":["experiment_id","group_id","study","pmid","doi","vector","virus","sample","tested","positive"]
+    "required":["experiment_id","study","pmid","doi","vector","virus","sample","tested","positive"]
 }
 
 
