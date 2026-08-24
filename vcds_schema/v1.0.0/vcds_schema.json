@@ -1,0 +1,454 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Vector Competence Data Standard v1.0.0",
+  "description":"A minimal flexible data standard viral vector competence studies",
+  "type": "object",
+  "properties": {
+    "experiment_id":{
+          "description":"A unique identifier for each combination of virus-host-sample within a study. The identifier is composed of a prefix, pmid, and a seven digit identifier. See http://purl.org/dc/elements/1.1/identifier",
+          "examples":["cmt_12345678_0000001", "aed_87654321_0000001", "tck_1_0000001"],
+          "type":"array",
+            "items":{
+            "type": ["string"],
+            "minItems":1,
+            "uniqueItems": true,
+            "pattern": "^[a-z]{3}_[0-9]{1,9}_[0-9]{7}"
+            }
+        },
+    "group_id":{
+        "description": "An identifier for linking different sample types that originate from the same experimental conditions. The identifier is composed of letters and underscores (snakecase). Each identifier must be unique within the study. See http://purl.obolibrary.org/obo/NCIT_C82529",
+        "examples": ["a","group_A","aedes_Aegypti_Zika_virus"],
+        "type":"array",
+            "items":{
+            "type": ["string"],
+            "minItems":1,
+            "pattern": "^[a-zA-Z]+(?:_[a-zA-Z]+)*$"
+            }
+    },
+    "study":{
+          "description":"An abbreviated citation for the study in the format Last name of first author, et al. Year Journal. See http://schema.org/citation",
+          "examples":["Murrieta et al. 2021 PLoS Pathogens"],
+          "type":"array",
+            "items":{
+            "type": ["string"],
+            "minItems":1
+            }
+        },
+    "pmid":{
+        "description":"A unique integer used to identify works within the PubMed system. Not to be confused with a PubMed Central Identifier. Review https://pmc.ncbi.nlm.nih.gov/about/public-access-info/ for additional details. See http://purl.obolibrary.org/obo/OBI_0001617",
+        "examples":["12345678"],
+        "type":"array",
+        "items":{
+        "type": ["integer"],
+            "minItems":1,
+            "minimum": 1,
+            "maximum": 99999999
+        }
+    },
+    "doi":{
+        "description":"A centrally registered identifier symbol used to uniquely identify objects given by International DOI Foundation. The DOI system is commonly used for electronic documents such as journal articles. See http://purl.obolibrary.org/obo/OBI_0002110.",
+        "examples":["10.1603/ME10007"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1,
+            "pattern" : "^10[.][0-9]{4,9}[/][^\\s]+$"
+        }
+    },
+    "vector":{
+        "description":"The Linnaean classification of the vector on which the experiment was performed, reported as a species binomial. See http://rs.tdwg.org/dwc/terms/scientificName",
+        "examples": ["Aedes aegypti"],
+        "type":"array",
+        "items":{
+            "type": ["string"],
+            "minItems":1
+          }
+    },
+    "vector_subspecies":{
+        "description":"Vector subspecies. A taxonomic category below that of species. See http://purl.obolibrary.org/obo/NCIT_C62700",
+        "examples": ["Wiedemann"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "vector_strain":{
+        "description":"Vector strain. A genetic variant within a species. See https://w3id.org/evorao/strain",
+        "examples": ["163/11", "Zafferana"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "vector_origin_country":{
+        "description":"The country that is the wild source for original vector collection. See http://rs.tdwg.org/dwc/terms/country",
+        "examples": ["United States","Belgium","Central African Republic"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "vector_origin_locality":{
+        "description":"The location that is the wild source for original vector collection. See http://rs.tdwg.org/dwc/terms/locality",
+        "examples": ["Pariquera-Açu Township, S.Paulo State", "Kern County, California"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "vector_origin_year":{
+        "description":"The year when the wild source for original vector collection occurred. May also include season or other date information. Must contain a four digit year. See http://rs.tdwg.org/dwc/terms/year",
+        "examples": ["1995", "Winter 2026"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1,
+            "pattern": ".*[0-9]{4}"
+          }
+    },
+    "vector_generation":{
+        "description":"Vector generation in lab colony. See http://purl.obolibrary.org/obo/PCO_0000054",
+        "examples": ["F2", "F9-F10","0"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1,
+            "pattern": ".*[0-9]{1,}"
+          }
+    },
+    "virus":{
+        "description":"The Linnaean classification of the virus with which the experiment was performed, reported as a species binomial. See http://rs.tdwg.org/dwc/terms/scientificName",
+        "examples": ["Yellow fever virus", "Zika Virus","Orthoflavivirus zikaense"],
+        "type":"array",
+        "items":{
+            "type": ["string"],
+            "minItems":1
+          }
+    },
+    "viral_lineage":{
+        "description":"Information about the genetic distinctness of the sequenced organism below the subspecies level, e.g., serovar, serotype, biotype, ecotype, or any relevant genetic typing schemes. See https://w3id.org/mixs/0000020",
+        "examples": ["West African genotype", "2","Lineage 1"],
+        "type":"array",
+        "items":{
+            "type": ["string", "null"],
+            "minItems":1
+          }
+    },
+    "viral_strain":{
+        "description":"Identifier given to a genetic variant within a single species. See https://w3id.org/evorao/strain",
+        "examples": ["HJV 64A-1519", "HJV B230","MMP1047"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "viral_genbank_accession":{
+        "description":"Accession number of an entry from the GenBank sequence database. See http://edamontology.org/data_2292",
+        "examples": ["KJ451624.1", "U91870"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "recombinant_virus":{
+        "description":"Is the virus derived from recombinant nucleic acid? See http://purl.bioontology.org/ontology/CSP/4005-0050",
+        "examples": ["yes", "no"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1,
+            "enum": ["yes","no",null]
+          }
+    },
+    "wildtype_mutant":{
+        "description":"Is the virus unmodified (wildtype) or has the genetic sequence of the virus been intentionally altered (mutant)? http://purl.obolibrary.org/obo/GENO_0000480",
+        "examples": ["wildtype", "mutant"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "enum": ["wildtype","mutant",null],
+            "minItems":1
+          }
+    },
+    "viral_origin_locality":{
+        "description":"The location that is the wild source for original virus collection. See http://rs.tdwg.org/dwc/terms/locality",
+        "examples": ["Zulia state, Venezuela", "Zika Forest, Uganda"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "viral_origin_year":{
+        "description":"The year when the wild source for original virus collection occurred. May also include season or other date information. Must contain a four digit year. See http://rs.tdwg.org/dwc/terms/year",
+        "examples": ["1995", "Winter 2026"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1,
+            "pattern": ".*[0-9]{4}"
+          }
+    },
+    "viral_history_passage":{
+        "description":"Cell type and passage number. See https://w3id.org/evorao/passage",
+        "examples": ["Vero, 2 passages", "C6/36 3", "Ae. triseriatus and Vero 12 alternate passages"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "viral_history_freshness":{
+        "description":"Specifies the conditions under which the product was stored to maintain stability and integrity, such as temperature, buffer, and other environmental factors. See https://w3id.org/evorao/storageConditions",
+        "examples": ["fresh", "frozen, -80ºC"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "exposure_route":{
+        "description":" The way a vector was exposed to a virus. See http://purl.obolibrary.org/obo/ExO_0000055",
+        "examples": ["bloodmeal", "intrathoracic injection", "live animal"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "host_exposure":{
+        "description":"Host species used for live animal exposure. See https://w3id.org/mixs/0001298",
+        "examples": ["Syrian hamster", "chicken", "American alligator"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "host_lineage_origin":{
+        "description":"Host intraspecific lineage name, or origin. See https://w3id.org/mixs/0000020",
+        "examples": ["Mesocricetus auratus", "C57BL/6"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "diagnostic_viremia":{
+        "description":"Diagnostic method used, if any, for measuring host viremia. See http://id.nlm.nih.gov/mesh/D019411",
+        "examples": ["plaque assay", "qRT-PCR"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "titer":{
+        "description":"Concentration of virus in bloodmeal, intrathoracic inoculation or host viremia if live animal. See http://purl.obolibrary.org/obo/VO_0000555",
+        "examples": [">8.8", "44000000", "1E7.1"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "titer_units":{
+        "description":"Unit of measure for titer concentration. See http://purl.obolibrary.org/obo/NCIT_C67375",
+        "examples": ["log10 FFU/ml", "viral RNA/ml", "MID50/ml"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "dose":{
+        "description":"Dose of live virus injected via intrathoracic inoculation, if applicable. See http://purl.obolibrary.org/obo/NCIT_C25488",
+        "examples": ["<0.5", "3.2"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "dose_units":{
+        "description":"Unit of measure for the dose. See http://purl.obolibrary.org/obo/NCIT_C48463",
+        "examples": ["TCID50", "PFU", "log10 TCID50", "log10 PFU"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "mean_temp_reared":{
+        "description":"Average temperature during rearing in Celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
+        "examples": [25.2, 30, 18, 27.6],
+        "type":"array",
+        "items":{
+            "type": ["number", "null"],
+            "minItems":1
+          }
+    },
+    "amplitude_temp_reared":{
+        "description":"Amplitude of temperature at which vectors are reared in Celsius. See http://purl.obolibrary.org/obo/NCIT_C70831",
+        "examples": [5, 3, 2],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "relative_humidity_reared":{
+        "description":"Percent relative humidity at which vectors are reared. See http://purl.allotrope.org/ontologies/result#AFR_0002614",
+        "examples": ["99", "50-60", "2"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "mean_temp_eit":{
+        "description":"Average temperature at which extrinsic incubation happens in Celsius. See http://www.ebi.ac.uk/efo/EFO_0001702",
+        "examples": ["25.2", "30", "18", "27.6"],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "amplitude_temp_eit":{
+        "description":"Amplitude of temperature at which extrinsic incubation happens in Celsius. See http://purl.obolibrary.org/obo/NCIT_C70831",
+        "examples": ["5", "3", "2"],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "relative_humidity_eit":{
+        "description":"Percent relative humidity at which vectors are reared. See http://purl.allotrope.org/ontologies/result#AFR_0002614",
+        "examples": ["99", "50-60", "2"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "dpi":{
+        "description":"Days post-infection. See http://purl.obolibrary.org/obo/UO_0000003",
+        "examples": ["5", "3-10", ">2"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "coinfected":{
+        "description":"Is your mosquito knowingly infected with another organism? See http://www.ebi.ac.uk/efo/EFO_0010716",
+        "examples": ["yes", "no"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "sample":{
+        "description":"Vector sample part used to establish infection. See http://purl.obolibrary.org/obo/OBI_0100051",
+        "examples": ["body", "head", "salivary glands"],
+        "type":"array",
+        "items":{
+            "type": ["string"],
+            "minItems":1
+          }
+    },
+    "diagnostic":{
+        "description":"How vector infection was established. See http://id.nlm.nih.gov/mesh/D019411",
+        "examples": ["qRT-PCR", "IFA", "plaque assay"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "tested":{
+        "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [1, 1000, 42],
+        "type":"array",
+        "items":{
+            "type": ["number"],
+            "minItems":1
+          }
+    },
+    "positive":{
+        "description":"Number of vectors tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [1, 1000, 42],
+        "type":"array",
+        "items":{
+            "type": ["number"],
+            "minItems":1
+          }
+    },
+    "transmission_recipient":{
+        "description":"Host species used for live animal exposure.",
+        "examples": ["suckling mouse", "chicken"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "transmission_diagnostic":{
+        "description":"Diagnostic method used to detect infection in animal. See http://id.nlm.nih.gov/mesh/D019411",
+        "examples": ["seroconversion", "death","plaque assay"],
+        "type":"array",
+        "items":{
+            "type": ["string","null"],
+            "minItems":1
+          }
+    },
+    "num_vector_fed":{
+        "description":"Number of vectors fed on the live animal. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [1, 1000, 42],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "num_vector_positive":{
+        "description":"Number of infected vectors that fed on the live animal. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [1, 500, 21],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "num_recipients_tested":{
+        "description":"Number of recipient animals tested for infection. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [10, 501, 121],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    },
+    "num_recipients_positive":{
+        "description":"Number of recipient animals that tested positive. See http://purl.obolibrary.org/obo/NCIT_C25463",
+        "examples": [5, 52, 12],
+        "type":"array",
+        "items":{
+            "type": ["number","null"],
+            "minItems":1
+          }
+    }
+},
+    "required":["experiment_id","study","pmid","doi","vector","virus","sample","tested","positive"]
+}
+
+

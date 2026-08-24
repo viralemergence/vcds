@@ -1,0 +1,49 @@
+## Github action to create and commit template
+name: Make Excel Templates
+
+on:
+  # Runs on pushes targeting the default branch
+  push: 
+    branches: ["main"]
+  workflow_dispatch:
+
+# Sets permissions of the GITHUB_TOKEN 
+permissions:
+  contents: write
+  id-token: write
+
+# Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
+# However, do NOT cancel in-progress runs as we want to allow these production deployments to complete.
+concurrency:
+  group: "excel_template"
+  cancel-in-progress: false
+jobs:
+ run-script:
+    runs-on: ubuntu-latest
+    steps:
+    - name: checkout repo
+      uses: actions/checkout@v4
+    - name: setup R
+      uses: r-lib/actions/setup-r@v2
+      with:
+        r-version: '4.5.0' # The R version to download if necessary) and use.
+        # Use "renv" to retrieve R version recorded in renv.lock file.
+    - name: Install packages
+      uses: r-lib/actions/setup-r-dependencies@v2
+      with:
+        packages: |
+          any::dplyr
+          any::purrr
+          any::jsonlite
+          any::openxlsx2
+          any::fs
+          any::stringr
+    - name: Run the R script
+      run: Rscript scripts/json_to_excel.R
+    - name: Commit and push if terms  changed                                                       
+      run: |
+          git config user.name  "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"                   
+          git add template/
+          git diff --staged --quiet || git commit -m "chore: regenerate excel templates"  
+          git push
