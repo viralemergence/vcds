@@ -34,9 +34,8 @@ Version history
 
 ### Versioning workflow
 
-[!IMPORTANT]
-
-:eyes: All changes should flow from the JSON schema. 
+> [!IMPORTANT]
+> :eyes: All changes should flow from the JSON schema. 
 
 Review the versioning guidelines above to determine what type of version increment you will be making. 
 All changes to the schema should be made on branches and merged into main via a pull request.  
