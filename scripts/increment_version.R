@@ -6,4 +6,4 @@ source("R/increment_version.R")
 ## a new major version is released.
 
 
-increment_schema_version(path = "vcds_schema/v1.0.0/vcds_schema.json",increment = "patch")
+increment_schema_version(path = "vcds_schema/v1.1.0/vcds_schema.json",increment = "patch")
