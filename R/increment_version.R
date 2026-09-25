@@ -56,7 +56,7 @@ increment_schema_version <- function(path, increment = c("major","minor","patch"
 
   # new json
   new_json_path <- fs::path(new_folder,"vcds_schema.json")
-  jsonlite::write_json(schema_list_new,path = new_json_path,pretty = TRUE, auto_unbox = TRUE,)
+  jsonlite::write_json(schema_list_new,path = new_json_path,pretty = TRUE, auto_unbox = TRUE, null = "null", na = "null")
 
 } 
 
