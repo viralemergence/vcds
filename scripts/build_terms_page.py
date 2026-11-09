@@ -426,16 +426,17 @@ def build_nav(
     
 
     # latest version for main navbar item
-    latest_version = schema_versions[-1]
+    schema_versions_sorted = sorted(schema_versions)
+    latest_version = schema_versions_sorted[-1]
     latest_term = f'"{h(SITE_URI)}/{h(latest_version)}/{h("terms/index.html")}"'
     latest_schema = f'"{h(SITE_URI)}/{h(latest_version)}/{h("vcds_schema.json")}"'
 
     # build terms items <li><a href="/v1.2.0/terms">v1.2.0 (latest)</a></li>
-    term_items = link_list(versions=schema_versions,
+    term_items = link_list(versions=schema_versions_sorted,
         page="terms/index.html")
 
     # build schema items <li><a href="/v1.2.0/schema">v1.2.0 (latest)</a></li>
-    schema_items = link_list(versions=schema_versions,
+    schema_items = link_list(versions=schema_versions_sorted,
         page="vcds_schema.json")
 
     return f""" <nav class="navbar">
