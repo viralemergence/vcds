@@ -415,7 +415,7 @@ def build_nav(
 
     def download_list(file_dict: dict) -> str:
         return "\n".join(
-            f'      <li><a href="{h(SITE_URI)}/{file}/{file_dict[file]}" download={file}>{file}</a></li>' for file in file_dict
+            f'      <li><a href="{h(SITE_URI)}/{h(file)}/{h(file_dict[file])}" download={h(file_dict[file])}>{file}</a></li>' for file in file_dict
             )
     # get template versions
     template_dict = get_template_dict(TEMPLATE_DIR)
