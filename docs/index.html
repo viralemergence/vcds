@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vector Competence Data Standard</title>
+  <link rel="stylesheet" href=./styles.css>
+</head>
+<body>
+
+<header>
+  <h1>Vector Competence Data Standard</h1>
+  <p>A minimum data standard for vector competence experiments</p>
+</header>
+
+ <nav class="navbar">
+    <ul class="navbar-nav">
+    <li><a href="https://viralemergence.github.io/vcds/">Home</a></li>
+    <li><a href="https://github.com/viralemergence/vcds">GitHub</a></li>
+
+    <!-- Dropdown terms -->
+    <li class="dropdown">
+      <a href="https://viralemergence.github.io/vcds/v1.2.0/terms/index.html" class="dropdown-toggle">Terms ▾</a>
+      <ul class="dropdown-menu">
+              <li><a href="https://viralemergence.github.io/vcds/v1.2.0/terms/index.html">v1.2.0</a></li>
+      <li><a href="https://viralemergence.github.io/vcds/v1.1.0/terms/index.html">v1.1.0</a></li>
+      <li><a href="https://viralemergence.github.io/vcds/v1.0.0/terms/index.html">v1.0.0</a></li>
+      </ul>
+    </li>
+
+    <!-- Dropdown schemas -->
+    <li class="dropdown">
+      <a href="https://viralemergence.github.io/vcds/v1.2.0/vcds_schema.json" class="dropdown-toggle">Schema ▾</a>
+      <ul class="dropdown-menu">
+              <li><a href="https://viralemergence.github.io/vcds/v1.2.0/vcds_schema.json">v1.2.0</a></li>
+      <li><a href="https://viralemergence.github.io/vcds/v1.1.0/vcds_schema.json">v1.1.0</a></li>
+      <li><a href="https://viralemergence.github.io/vcds/v1.0.0/vcds_schema.json">v1.0.0</a></li>
+      </ul>
+    </li>
+
+    <!-- Dropdown templates -->
+    <li class="dropdown">
+      <a href="https://viralemergence.github.io/vcds/v1.2.0/vcds_template_1_2_0.xlsx" class="dropdown-toggle">Download Excel Template ▾</a>
+      <ul class="dropdown-menu">
+              <li><a href="https://viralemergence.github.io/vcds/v1.2.0/vcds_template_1_2_0.xlsx" download=v1.2.0>v1.2.0</a></li>
+      <li><a href="https://viralemergence.github.io/vcds/v1.1.0/vcds_template_1_1_0.xlsx" download=v1.1.0>v1.1.0</a></li>
+      <li><a href="https://viralemergence.github.io/vcds/v1.0.0/vcds_template_1_0_0.xlsx" download=v1.0.0>v1.0.0</a></li>
+      <li><a href="https://viralemergence.github.io/vcds/v0.0.2 (Oropouche release)/COMET_template_0_0_2.xlsx" download=v0.0.2 (Oropouche release)>v0.0.2 (Oropouche release)</a></li>
+      <li><a href="https://viralemergence.github.io/vcds/v0.0.1 (Paper release)/COMET_template_0_0_1.xlsx" download=v0.0.1 (Paper release)>v0.0.1 (Paper release)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+
+<main>
+<section id="about">
+<h2>About</h2> 
+  <p class="intro">
+    The Vector Competence Data Standards (VCDS) is maintained by <a href = "https://www.viralemergence.org/">Verena</a>
+    and aims to provide consistent terminology for describing vector competence experiments.
+    <br>
+    <br>
+    This data standard is extensible, that is you may include additional terms not in the standard.
+    When validating data with the JSON schema, these terms will be ignored. 
+    <br>
+    <br>
+    The growing threat of vector-borne diseases, highlighted by recent epidemics, 
+    has prompted increased focus on the fundamental biology of vector-virus 
+    interactions. To this end, experiments are often the most reliable way to 
+    measure vector competence (the potential for arthropod vectors to transmit 
+    certain pathogens). Data from these experiments are critical to understand 
+    outbreak risk.
+    <br>
+    <br>
+    Using the VCDS to describe vector competence studies facilitates interpretation and data sharing. 
+  </p>
+
+<section id="schema">
+<h2>Schema</h2> 
+  <p>
+    VCDS uses a <a href="https://json-schema.org/">JSON schema</a> to describe the properties in a data set and the relationship between those
+    properties. The JSON schema expects tabular data that contain at least the required fields.
+  </p>
+
+  <p>
+    Data can  be validated against the JSON schema using a validation engine:
+        <table class="version-table" style="margin-top: 0.5rem;">
+          <thead>
+            <tr>
+              <th>Programing language</th>
+              <th>Library</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>JavaScript</td>
+              <td><a href="https://ajv.js.org/guide/getting-started.html">AJV</a></td>
+            </tr>
+            <tr>
+              <td>R</td>
+              <td><a href="https://docs.ropensci.org/jsonvalidate/">jsonvalidate</a></td>
+            </tr>
+            <tr>
+              <td>Python</td>
+              <td><a href="https://python-jsonschema.readthedocs.io/en/stable/">jsonschema</a></td>
+            </tr>
+          </tbody>
+        </table>
+  </p>
+</section>  
+
+<section id="terms">
+    <h2>Terms</h2> 
+    These are the properties of the JSON schema. 
+    <br>
+    <br>
+    Each term card contains a plain language description and a link to a controlled vocabulary
+    that provides a more technical description of the item. 
+    <br>
+    <br>
+    The terms page has a search bar just below the table of contents. It can filter on any property of 
+    a term card (e.g. name, description, badge, etc.)
+    <br>
+    <br>
+    Coming soon: registering VCDS with w3id.org.
+</section>
+
+<section id="templates">
+    <h2>Templates</h2>
+    Excel templates are available to facilitate getting started with the VCDS. The columns in the excel spreadsheet correspond to the 
+    the properties in the JSON schema schema. To download a template, select the version you woule like to do use from the 
+    "download excel template" menu item.
+</section>
+<section id="versioning">
+    <h2>Versioning</h2>
+    <ol style="margin: 0.5rem 0 0.85rem 1.5rem; color: #333;">
+      <li style="margin-bottom: 0.75rem;">
+        All versions of VCDS will include a version number in their title (e.g. <code>v1.0.0</code>).
+        <table class="version-table" style="margin-top: 0.5rem;">
+          <thead>
+            <tr>
+              <th>Change type</th>
+              <th>Examples</th>
+              <th>Version bump</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Breaking</td>
+              <td>Updating required fields, changing field names, adding or removing value restrictions</td>
+              <td><code>1.0.0 → 2.0.0</code> (major)</td>
+            </tr>
+            <tr>
+              <td>Non-breaking, affects validation</td>
+              <td>Refining regex patterns, correcting or refining enum values, modifying the directory structure</td>
+              <td><code>1.0.0 → 1.1.0</code> (minor)</td>
+            </tr>
+            <tr>
+              <td>Non-breaking, no validation impact</td>
+              <td>Updating descriptions, adding examples, modifying templates</td>
+              <td><code>1.0.0 → 1.0.1</code> (patch)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li style="margin-bottom: 0.75rem;">
+        When a new version of the schema is published, a new GitHub release must be created
+        as well as a new version of the schema on
+        <a href="https://doi.org/10.5281/zenodo.15020049">Zenodo</a>.
+      </li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  Generated from
+  <a href="https://github.com/viralemergence/vcds">viralemergence/vcds</a>.
+  VCDS terms are available via the
+  <a href="https://w3id.org/vcds/">w3id.org/vcds</a> persistent namespace.
+</footer>
+
+<script>
+
+const input   = document.getElementById('filter');
+const terms   = document.querySelectorAll('.term');
+const sections = document.querySelectorAll('.schema-section');
+
+input.addEventListener('input', () => {
+  const q = input.value.toLowerCase().trim();
+
+  terms.forEach(t => {
+    if (!q) { t.classList.remove('hidden'); return; }
+    const text = (t.id + ' ' + t.innerText).toLowerCase();
+    t.classList.toggle('hidden', !text.includes(q));
+  });
+
+  // Hide section headers when all their terms are hidden
+  sections.forEach(sec => {
+    const visible = [...sec.querySelectorAll('.term')]
+      .some(t => !t.classList.contains('hidden'));
+    sec.style.display = (!q || visible) ? '' : 'none';
+  });
+});
+
+// Enables click/tap toggling (needed for touch devices and accessibility),
+// in addition to the CSS :hover behavior above.
+document.querySelectorAll('.dropdown-toggle').forEach(toggle => {
+  toggle.addEventListener('click', function (e) {
+    e.preventDefault();
+    const parent = this.closest('.dropdown');
+    const isOpen = parent.classList.contains('open');
+
+    // Close any other open dropdowns first
+    document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+
+    if (!isOpen) parent.classList.add('open');
+  });
+});
+
+// Close dropdown when clicking outside
+document.addEventListener('click', function (e) {
+  if (!e.target.closest('.dropdown')) {
+    document.querySelectorAll('.dropdown.open').forEach(d => d.classList.remove('open'));
+  }
+});
+
+
+</script>
+
+</body>
+</html>

@@ -17,9 +17,10 @@ Output:
 
 from __future__ import annotations
 
+import html as html_lib
 import json
 import re
-import html as html_lib
+import shutil
 from pathlib import Path
 
 # ---------------------------------------------------------------------------
@@ -28,8 +29,12 @@ from pathlib import Path
 
 REPO_ROOT = Path(__file__).parent.parent
 SCHEMAS_DIR = REPO_ROOT / "vcds_schema"
+TEMPLATE_DIR = REPO_ROOT / "template"
 VCDS_SCHEMA  =  SCHEMAS_DIR / "VERSION" / "vcds_schema.json"
 OUTPUT_DIR_TERMS           = REPO_ROOT / "docs" / "VERSION" / "terms"
+OUTPUT_PATH_JSON           = REPO_ROOT / "docs" / "VERSION" / "vcds_schema.json"
+OUTPUT_PATH_HOME           = REPO_ROOT / "docs" / "index.html"
+OUTPUT_PATH_TEMPLATE           = REPO_ROOT / "docs"
 BASE_URI_GENERIC = "https://w3id.org/vcds"
 
 
@@ -44,6 +49,7 @@ SCHEMA_URIS = {
 }
 
 SITE_URI = "https://viralemergence.github.io/vcds"
+
 
 
 # ---------------------------------------------------------------------------
@@ -83,6 +89,20 @@ def resolve_ref(ref: str, datacite: dict) -> dict:
     except (KeyError, TypeError):
         return {}
 
+# templates
+
+def get_template_dict(path: Path) -> dict:
+    folders = [x for x in path.iterdir() if x.is_dir()]
+    out = {}
+    for folder in folders:
+        dir = folder.name
+        file = ""
+        for temp_file in folder.glob("*template*"):
+            if temp_file.is_file():
+                file = temp_file.name
+            out.update({dir:file})
+    reverse_sorted_dict = dict(sorted(out.items(), reverse=True))
+    return reverse_sorted_dict
 
 # ---------------------------------------------------------------------------
 # Display helpers
@@ -215,14 +235,14 @@ def render_term(
 
     lines = [
         f'  <section class="term{indent_class}" id="{h(anchor_id)}">',
-        f'    <div class="term-header">',
+        '    <div class="term-header">',
         f'      <h3 class="term-name">{h(display_name)}</h3>',
-        f'      <div class="term-badges">',
+        '      <div class="term-badges">',
         f'        {type_html}',
         f'        {badge("required", "required") if is_required else badge("optional", "optional")}',
-        f'      </div>',
-        f'    </div>',
-        f'    <div class="term-body">',
+        '      </div>',
+        '    </div>',
+        '    <div class="term-body">',
     ]
 
     if display_desc:
@@ -253,13 +273,6 @@ def render_term(
             f'      <div class="dwc-ref">'
             f'<strong>Term Reference:</strong> '
             f'<a href="{dwc_uri}">{dwc_uri}</a></div>'
-        )
-
-    if datacite_ref:
-        lines.append(
-            f'      <div class="datacite-ref">'
-            f'<strong>DataCite field:</strong> '
-            f'<a href="{DATACITE_DOCS}/search/?q={display_name}">{h(datacite_ref)}</a></div>'
         )
 
     versioned_schema_uri = insert_version(schema_uri,version)
@@ -322,6 +335,7 @@ def build_vcds_data_section(schema: dict,
 # ---------------------------------------------------------------------------
 
 CSS = "../../styles.css"
+CSS_HOME = "./styles.css"
 
 JS = """
 const input   = document.getElementById('filter');
@@ -398,6 +412,19 @@ def build_nav(
         return "\n".join(
             f'      <li><a href="{h(SITE_URI)}/{h(version)}/{h(page)}">{version}</a></li>' for version in reversed(versions)
         )
+
+    def download_list(file_dict: dict) -> str:
+        return "\n".join(
+            f'      <li><a href="{h(SITE_URI)}/{file}/{file_dict[file]}" download={file}>{file}</a></li>' for file in file_dict
+            )
+    # get template versions
+    template_dict = get_template_dict(TEMPLATE_DIR)
+    print(template_dict)
+    template_list = download_list(template_dict)
+    first_key = next(iter(template_dict))
+    latest_template = f'"{h(SITE_URI)}/{h(first_key)}/{h(template_dict[first_key])}"'
+    
+
     # latest version for main navbar item
     latest_version = schema_versions[-1]
     latest_term = f'"{h(SITE_URI)}/{h(latest_version)}/{h("terms/index.html")}"'
@@ -429,6 +456,14 @@ def build_nav(
       <a href={latest_schema} class="dropdown-toggle">Schema ▾</a>
       <ul class="dropdown-menu">
         {schema_items}
+      </ul>
+    </li>
+
+    <!-- Dropdown templates -->
+    <li class="dropdown">
+      <a href={latest_template} class="dropdown-toggle">Download Excel Template ▾</a>
+      <ul class="dropdown-menu">
+        {template_list}
       </ul>
     </li>
   </ul>
@@ -496,6 +531,165 @@ def build_page(
 </html>
 """
 
+def build_home(
+    nav_bar = str,
+) -> str:
+    site_title = "Vector Competence Data Standard"
+
+    return f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{h(site_title)}</title>
+  <link rel="stylesheet" href={CSS_HOME}>
+</head>
+<body>
+
+<header>
+  <h1>{h(site_title)}</h1>
+  <p>A minimum data standard for vector competence experiments</p>
+</header>
+
+{nav_bar}
+
+<main>
+<section id="about">
+<h2>About</h2> 
+  <p class="intro">
+    The Vector Competence Data Standards (VCDS) is maintained by <a href = "https://www.viralemergence.org/">Verena</a>
+    and aims to provide consistent terminology for describing vector competence experiments.
+    <br>
+    <br>
+    This data standard is extensible, that is you may include additional terms not in the standard.
+    When validating data with the JSON schema, these terms will be ignored. 
+    <br>
+    <br>
+    The growing threat of vector-borne diseases, highlighted by recent epidemics, 
+    has prompted increased focus on the fundamental biology of vector-virus 
+    interactions. To this end, experiments are often the most reliable way to 
+    measure vector competence (the potential for arthropod vectors to transmit 
+    certain pathogens). Data from these experiments are critical to understand 
+    outbreak risk.
+    <br>
+    <br>
+    Using the VCDS to describe vector competence studies facilitates interpretation and data sharing. 
+  </p>
+
+<section id="schema">
+<h2>Schema</h2> 
+  <p>
+    VCDS uses a <a href="https://json-schema.org/">JSON schema</a> to describe the properties in a data set and the relationship between those
+    properties. The JSON schema expects tabular data that contain at least the required fields.
+  </p>
+
+  <p>
+    Data can  be validated against the JSON schema using a validation engine:
+        <table class="version-table" style="margin-top: 0.5rem;">
+          <thead>
+            <tr>
+              <th>Programing language</th>
+              <th>Library</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>JavaScript</td>
+              <td><a href="https://ajv.js.org/guide/getting-started.html">AJV</a></td>
+            </tr>
+            <tr>
+              <td>R</td>
+              <td><a href="https://docs.ropensci.org/jsonvalidate/">jsonvalidate</a></td>
+            </tr>
+            <tr>
+              <td>Python</td>
+              <td><a href="https://python-jsonschema.readthedocs.io/en/stable/">jsonschema</a></td>
+            </tr>
+          </tbody>
+        </table>
+  </p>
+</section>  
+
+<section id="terms">
+    <h2>Terms</h2> 
+    These are the properties of the JSON schema. 
+    <br>
+    <br>
+    Each term card contains a plain language description and a link to a controlled vocabulary
+    that provides a more technical description of the item. 
+    <br>
+    <br>
+    The terms page has a search bar just below the table of contents. It can filter on any property of 
+    a term card (e.g. name, description, badge, etc.)
+    <br>
+    <br>
+    Coming soon: registering VCDS with w3id.org.
+</section>
+
+<section id="templates">
+    <h2>Templates</h2>
+    Excel templates are available to facilitate getting started with the VCDS. The columns in the excel spreadsheet correspond to the 
+    the properties in the JSON schema schema. To download a template, select the version you woule like to do use from the 
+    "download excel template" menu item.
+</section>
+<section id="versioning">
+    <h2>Versioning</h2>
+    <ol style="margin: 0.5rem 0 0.85rem 1.5rem; color: #333;">
+      <li style="margin-bottom: 0.75rem;">
+        All versions of VCDS will include a version number in their title (e.g. <code>v1.0.0</code>).
+        <table class="version-table" style="margin-top: 0.5rem;">
+          <thead>
+            <tr>
+              <th>Change type</th>
+              <th>Examples</th>
+              <th>Version bump</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Breaking</td>
+              <td>Updating required fields, changing field names, adding or removing value restrictions</td>
+              <td><code>1.0.0 → 2.0.0</code> (major)</td>
+            </tr>
+            <tr>
+              <td>Non-breaking, affects validation</td>
+              <td>Refining regex patterns, correcting or refining enum values, modifying the directory structure</td>
+              <td><code>1.0.0 → 1.1.0</code> (minor)</td>
+            </tr>
+            <tr>
+              <td>Non-breaking, no validation impact</td>
+              <td>Updating descriptions, adding examples, modifying templates</td>
+              <td><code>1.0.0 → 1.0.1</code> (patch)</td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+      <li style="margin-bottom: 0.75rem;">
+        When a new version of the schema is published, a new GitHub release must be created
+        as well as a new version of the schema on
+        <a href="https://doi.org/10.5281/zenodo.15020049">Zenodo</a>.
+      </li>
+    </ol>
+  </section>
+
+</main>
+
+<footer>
+  Generated from
+  <a href="https://github.com/viralemergence/vcds">viralemergence/vcds</a>.
+  VCDS terms are available via the
+  <a href="https://w3id.org/vcds/">w3id.org/vcds</a> persistent namespace.
+</footer>
+
+<script>
+{JS}
+</script>
+
+</body>
+</html>
+"""
+
+
 
 # ---------------------------------------------------------------------------
 # Entry point
@@ -524,6 +718,19 @@ def main():
 
         output_file.write_text(page, encoding="utf-8")
         # write json files
+        output_json = insert_version(OUTPUT_PATH_JSON,v)
+        shutil.copy(v_vcds_schema_path, output_json)
+    template_dict = get_template_dict(TEMPLATE_DIR)
+    
+    for t_version in template_dict:
+        output_template = OUTPUT_PATH_TEMPLATE / t_version / template_dict[t_version]
+        output_template.mkdir(parents=True, exist_ok=True)
+        template_path = TEMPLATE_DIR / t_version / template_dict[t_version]
+        shutil.copy(template_path, output_template)
+
+        
+    home_page = build_home(nav_bar)
+    OUTPUT_PATH_HOME.write_text(home_page,encoding = "utf-8")
 
     print(f"Written: {output_file}")
     print(f"  VCDS terms:    {len(vcds_anchors)}")

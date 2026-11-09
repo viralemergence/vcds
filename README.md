@@ -58,6 +58,9 @@ Once changes are pushed to main,  `scripts/json_to_excel.R` will run via github 
 You can also run `scripts/json_to_excel.R` manually if you like.
 
 
+## Building the terms site
+
+The whole terms site is built from `scripts/build_terms_page`. 
 
 ## Changelog 
 
