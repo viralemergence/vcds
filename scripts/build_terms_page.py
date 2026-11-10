@@ -522,6 +522,9 @@ def build_page(
   <a href="https://github.com/viralemergence/vcds">viralemergence/vcds</a>.
   VCDS terms are available via the
   <a href="https://w3id.org/vcds/">w3id.org/vcds</a> persistent namespace.
+
+  The authors of this website are grateful for the support of the Verena Institute, Carlson Lab, Yale School of Public Health. This work was supported by an NSF Biology Integration Institute grant (NSF DBI 2021909, 2213854, and 2515340).
+
 </footer>
 
 <script>
@@ -550,6 +553,9 @@ def build_home(
 <header>
   <h1>{h(site_title)}</h1>
   <p>A minimum data standard for vector competence experiments</p>
+  <a href="https://zenodo.org/badge/latestdoi/502667317">
+    <img src="https://zenodo.org/badge/502667317.svg" alt="zenodo badge">
+  </a>
 </header>
 
 {nav_bar}
@@ -563,7 +569,7 @@ def build_home(
     <br>
     <br>
     This data standard is extensible, that is you may include additional terms not in the standard.
-    When validating data with the JSON schema, these terms will be ignored. 
+    When validating data with the JSON schema, these terms will be ignored unless you modify the json schema file. 
     <br>
     <br>
     The growing threat of vector-borne diseases, highlighted by recent epidemics, 
@@ -571,7 +577,7 @@ def build_home(
     interactions. To this end, experiments are often the most reliable way to 
     measure vector competence (the potential for arthropod vectors to transmit 
     certain pathogens). Data from these experiments are critical to understand 
-    outbreak risk.
+    outbreak risk. To read more about the drive to create the VCDS, please read the <a ref="https://doi.org/10.1038/s41597-022-01741-4">manuscript</a>.
     <br>
     <br>
     Using the VCDS to describe vector competence studies facilitates interpretation and data sharing. 
@@ -680,6 +686,9 @@ def build_home(
   <a href="https://github.com/viralemergence/vcds">viralemergence/vcds</a>.
   VCDS terms are available via the
   <a href="https://w3id.org/vcds/">w3id.org/vcds</a> persistent namespace.
+  Acknowledgements
+
+The authors of this website are grateful for the support of the Verena Institute, Carlson Lab, Yale School of Public Health. This work was supported by an NSF Biology Integration Institute grant (NSF DBI 2021909, 2213854, and 2515340).
 </footer>
 
 <script>
