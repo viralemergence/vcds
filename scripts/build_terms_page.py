@@ -725,7 +725,7 @@ def main():
     
     for t_version in template_dict:
         output_template = OUTPUT_PATH_TEMPLATE / t_version / template_dict[t_version]
-        output_template.mkdir(parents=True, exist_ok=True)
+        t_version.mkdir(parents=True, exist_ok=True)
         template_path = TEMPLATE_DIR / t_version / template_dict[t_version]
         shutil.copy(template_path, output_template)
 
