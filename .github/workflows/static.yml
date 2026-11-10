@@ -2,9 +2,6 @@
 name: Deploy static content to Pages
 
 on:
-  # Runs on pushes targeting the default branch
-  push: 
-    branches: ["main"]
   # workflow run
   workflow_run:
     workflows: ["Make Excel Templates"] 
