@@ -59,20 +59,21 @@
 <section id="about">
 <h2>About</h2> 
   <p class="intro">
-    The Vector Competence Data Standards (VCDS) is maintained by <a href = "https://www.viralemergence.org/">Verena</a>
-    and aims to provide consistent terminology for describing vector competence experiments.
-    <br>
-    <br>
-    This data standard is extensible, that is you may include additional terms not in the standard.
-    When validating data with the JSON schema, these terms will be ignored unless you modify the json schema file. 
-    <br>
-    <br>
     The growing threat of vector-borne diseases, highlighted by recent epidemics, 
     has prompted increased focus on the fundamental biology of vector-virus 
     interactions. To this end, experiments are often the most reliable way to 
     measure vector competence (the potential for arthropod vectors to transmit 
     certain pathogens). Data from these experiments are critical to understand 
     outbreak risk. To read more about the drive to create the VCDS, please read the <a ref="https://doi.org/10.1038/s41597-022-01741-4">manuscript</a>.
+    Using the VCDS to describe vector competence studies facilitates interpretation and data sharing. 
+    <br>
+    <br>
+    The Vector Competence Data Standards (VCDS) is maintained by <a href = "https://www.viralemergence.org/">Verena</a>
+    and aims to provide consistent terminology for describing vector competence experiments.
+    <br>
+    <br>
+    This data standard is extensible, that is you may include additional terms not in the standard.
+    When validating data with the JSON schema, these terms will be ignored unless you modify the json schema file. 
     <br>
     <br>
     Using the VCDS to describe vector competence studies facilitates interpretation and data sharing. 
@@ -83,6 +84,7 @@
   <p>
     VCDS uses a <a href="https://json-schema.org/">JSON schema</a> to describe the properties in a data set and the relationship between those
     properties. The JSON schema expects tabular data that contain at least the required fields.
+    Each row represents a unique "experiment-vector-virus-sample type" relationship in a publication. 
   </p>
 
   <p>
