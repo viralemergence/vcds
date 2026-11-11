@@ -64,6 +64,10 @@ def insert_version(path: Path, version:str) -> Path:
     new_path = Path(str(path).replace("VERSION", version))
     return new_path
 
+def insert_version_str(path: Path, version:str) -> StopIteration:
+    new_path = str(path).replace("VERSION", version)
+    return new_path
+
 def load_schema(path: Path) -> dict:
     with open(path, encoding="utf-8") as f:
         return json.load(f)
@@ -261,7 +265,7 @@ def render_term(
         )
 
     if base_uri:
-        base_uri_version = insert_version(base_uri,version)
+        base_uri_version = insert_version_str(base_uri,version)
         term_uri = f"{base_uri_version}/{anchor_id}"
         lines.append(
             f'      <div class="term-uri">'
@@ -275,7 +279,7 @@ def render_term(
             f'<a href="{dwc_uri}">{dwc_uri}</a></div>'
         )
 
-    versioned_schema_uri = insert_version(schema_uri,version)
+    versioned_schema_uri = insert_version_str(schema_uri,version)
     lines.append(
         f'      <div class="schema-ref">'
         f'<strong>Defined in:</strong> '
